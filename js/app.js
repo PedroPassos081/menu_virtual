@@ -154,6 +154,32 @@ cardapio.metodos = {
 };
 
 
+//abrir a modal de carrinho
+abrirCarrinho: (abrir) => {
+
+  if (abrir) {
+    $("#modalCarrinho").removeClass('hidden')
+  } else {
+    $("#modalCarrinho").addClassClass('hidden')
+  }
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 cardapio.templates = {
   item: `
