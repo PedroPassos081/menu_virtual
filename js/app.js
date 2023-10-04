@@ -127,13 +127,26 @@ cardapio.metodos = {
       $(".botao-carrinho").removeClass('hidden')
       $(".container-total-carrinho").removeClass('hidden')
     } else {
-      $(".botao-carrinho").addClassClass('hidden')
-      $(".container-total-carrinho").addClassClass('hidden')
+      $(".botao-carrinho").addClass('hidden')
+      $(".container-total-carrinho").addClass('hidden')
     }
 
     $(".badge-total-carrinho").html(total)
   },
+  
 
+//abrir a modal de carrinho
+abrirCarrinho: (abrir) => {
+
+  if (abrir) {
+    $("#modalCarrinho").removeClass('hidden')
+  } else {
+    $("#modalCarrinho").addClass('hidden')
+  }
+},
+
+
+  //mensagens
   mensagem: (texto, cor = 'red', tempo = 3500) => {
 
     let id = Math.floor(Date.now() * Math.random()).toString()
@@ -146,37 +159,13 @@ cardapio.metodos = {
       $("#msg-" + id).removeClass('fadeInDown')
       $("#msg-" + id).addClass('fadeOutUp')
      setTimeout(() => {
+
       $("#msg-" + id).remove()
      }, 800)
     }, tempo)
   } 
 
 };
-
-
-//abrir a modal de carrinho
-abrirCarrinho: (abrir) => {
-
-  if (abrir) {
-    $("#modalCarrinho").removeClass('hidden')
-  } else {
-    $("#modalCarrinho").addClassClass('hidden')
-  }
-},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
