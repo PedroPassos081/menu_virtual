@@ -104,15 +104,46 @@ cardapio.metodos = {
       }
 
       //zerar depois que adicionar ao carrinho
+      cardapio.metodos.mensagem('Item adicionado ao carrinho')
       $("#qntd-" + id).text(0)
+
+      cardapio.metodos.atualizarBadgeTotal()
      
     }
 
   }
   
- }
+ },
+ //atualiza o badge de totais dos botões 'meu carrinho'
+  atualizarBadgeTotal: () => {
+
+    var total = 0
+
+    $.each(MEU_CARRINHO, (i, e) => {
+      total += e.qntd
+    })
+
+    if(total > 0) {
+      $(".botao-carrinho").removeClass('hidden')
+      $(".container-total-carrinho").removeClass('hidden')
+    } else {
+      $(".botao-carrinho").addClassClass('hidden')
+      $(".container-total-carrinho").addClassClass('hidden')
+    }
+
+    $(".badge-total-carrinho").html(total)
+  },
+
+  mensagem: (texto, cor = 'red', tempo = 3500) => {
+
+    let msg = `<div class=" toast${cor}">${texto}</div>`
+
+    $(".container-mensagens").append(texto)
+  } 
 
 };
+
+
 
 cardapio.templates = {
   item: `
