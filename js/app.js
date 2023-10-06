@@ -226,24 +226,54 @@ carregarCarrinho: () => {
     })
 
   } else {
+    $("#itensCarrinho").html('<p class="carrinho-vazio"><i class="fa fa-shopping-bag"></i> Seu carrinho está vazio.</p>')
 
   }
 },
 
 diminuirQuantidadeCarrinho: (id) => {
 
+  let qntAtual = parseInt($("#qntd-carrinho-" + id).text())
+
+    if (qntAtual > 1) {
+      $("#qntd-carrinho-" + id).text(qntAtual - 1)
+      cardapio.metodos.atualizarCarrinho(id, qntAtual - 1)
+    }
+    else {
+      cardapio.metodos.removerItemCarrinho(id)
+    }
 
 },
 
 aumentarQuantidadeCarrinho: (id) => {
 
+  let qntAtual = parseInt($("#qntd-carrinho-" + id).text())
+  $("#qntd-carrinho-" + id).text(qntAtual + 1)
+  cardapio.metodos.atualizarCarrinho(id, qntAtual + 1)
 },
 
+
+//botão que remove item do carrinho
 removerItemCarrinho: (id) => {
 
+  MEU_CARRINHO = $.grep(MEU_CARRINHO, (e, i) => { return e.id != id })
+  cardapio.metodos.carregarCarrinho();
+
+  //atualiza o botão carrinho com a quantidade atualizada
+  cardapio.metodos.atualizarBadgeTotal()
+
 },
 
+//atualiza o carrinho com a quantidade atual
+atualizarCarrinho: (id, qntd) => {
 
+  let objIndex = MEU_CARRINHO.findIndex((obj => obj.id == id))
+  MEU_CARRINHO[objIndex].qntd = qntd
+
+  //atualiza o botão carrinho com a quantidade atualizada
+  cardapio.metodos.atualizarBadgeTotal()
+
+},
 
   //mensagens
   mensagem: (texto, cor = 'red', tempo = 3500) => {
