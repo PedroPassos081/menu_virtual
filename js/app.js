@@ -16,6 +16,7 @@ cardapio.eventos = {
   init: () => {
     cardapio.metodos.obterItensCardapio();
     cardapio.metodos.carregarBotaoReserva();
+    cardapio.metodos.carregarBotaoLigar()
   },
 };
 
@@ -454,7 +455,7 @@ cardapio.metodos = {
 
           //converte a URL
           let encode = encodeURI(texto)
-          let URL= `https://wa.me/5581989714251?text=${encode}`
+          let URL= `https://wa.me/${celular}?text=${encode}`
 
           $("#btnEtapaResumo").attr('href', URL)
         }
@@ -469,22 +470,29 @@ cardapio.metodos = {
   
   carregarBotaoReserva: () => {
 
-   var texto = 'Olá! gostaria de fazer uma reserva'
-  
-   let encode = encodeURI(texto)
-   let URL= `https://wa.me/${Celular}?text=${encode}`
+    var texto = 'Olá! gostaria de fazer uma reserva'
+    
+    let encode = encodeURI(texto)
+    let URL= `https://wa.me/${celular}?text=${encode}`
 
-    $("#btnReserva").attr('href', URL)
+      $("#btnReserva").attr('href', URL)
   
     },
 
-  
   carregarBotaoLigar: () => {
 
-    $("#btnLigar").attr
-
+    $("#btnLigar").attr('href', `tel:${celular}`)
 
   },
+
+  abrirDepoimento: (depoimento) => {
+
+    $("#depoimento-1").addClass('hidden')
+    $("#depoimento-2").addClass('hidden')
+    $("#depoimento-3").addClass('hidden')
+
+  },
+  
 
   //mensagens
   mensagem: (texto, cor = "red", tempo = 3500) => {
