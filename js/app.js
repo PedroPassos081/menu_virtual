@@ -491,6 +491,12 @@ cardapio.metodos = {
     $("#depoimento-2").addClass('hidden')
     $("#depoimento-3").addClass('hidden')
 
+    $("#btnDepoimento-1").removeClass('active')
+    $("#btnDepoimento-2").removeClass('active')
+    $("#btnDepoimento-3").removeClass('active')
+
+    $("#depoimento-" + depoimento).removeClass('hidden')
+    $("#depoimento-" + depoimento).addClass('active')
   },
   
 
