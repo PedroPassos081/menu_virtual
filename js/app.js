@@ -13,6 +13,7 @@ var VALOR_ENTREGA = 5;
 cardapio.eventos = {
   init: () => {
     cardapio.metodos.obterItensCardapio();
+    cardapio.metodos.carregarBotaoReserva();
   },
 };
 
@@ -462,6 +463,18 @@ cardapio.metodos = {
     }
 
   },
+
+  carregarBotaoReserva: () => {
+
+   var texto = 'Olá! gostaria de fazer uma reserva'
+  
+   let encode = encodeURI(texto)
+   let URL= `https://wa.me/5581989714251?text=${encode}`
+
+    $("#btnReserva").attr('href', URL)
+  
+    },
+
 
   //mensagens
   mensagem: (texto, cor = "red", tempo = 3500) => {
