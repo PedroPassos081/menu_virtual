@@ -10,6 +10,8 @@ var MEU_ENDERECO = null;
 var VALOR_CARRINHO = 0;
 var VALOR_ENTREGA = 5;
 
+var celular = '5581989714251'
+
 cardapio.eventos = {
   init: () => {
     cardapio.metodos.obterItensCardapio();
@@ -464,17 +466,25 @@ cardapio.metodos = {
 
   },
 
+  
   carregarBotaoReserva: () => {
 
    var texto = 'Olá! gostaria de fazer uma reserva'
   
    let encode = encodeURI(texto)
-   let URL= `https://wa.me/5581989714251?text=${encode}`
+   let URL= `https://wa.me/${Celular}?text=${encode}`
 
     $("#btnReserva").attr('href', URL)
   
     },
 
+  
+  carregarBotaoLigar: () => {
+
+    $("#btnLigar").attr
+
+
+  },
 
   //mensagens
   mensagem: (texto, cor = "red", tempo = 3500) => {
