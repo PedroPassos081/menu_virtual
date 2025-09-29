@@ -736,7 +736,7 @@ select.form-control {
   align-items: center;
   font-size: 20px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  color: var(--color-black-heavy)!important;
+  color: var(--color-black-heavy) !important;
   border-radius: 50px;
   cursor: pointer;
   z-index: 1;
@@ -782,5 +782,156 @@ select.form-control {
   margin: 0 auto;
   border-radius: 50px;
   margin-bottom: 10px;
+}
 
+/* =========================
+   HEADER RESPONSIVO (apenas)
+   ========================= */
+
+/* base do header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--color-background);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* navbar container */
+.header .navbar {
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 64px;
+}
+
+/* logo */
+.header .navbar-brand {
+  margin-left: 0; /* neutraliza o -30px do desktop */
+  display: inline-flex;
+  align-items: center;
+}
+.header .navbar-brand .img-logo {
+  height: 40px; /* controla altura da marca no mobile */
+  width: auto;
+}
+
+/* botão hamburguer */
+.header .navbar-toggler {
+  border: none;
+  padding: 8px 10px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.header .navbar-toggler .navbar-toggler-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+.header .navbar-toggler i {
+  font-size: 22px;
+  color: var(--color-black);
+}
+
+/* área colapsável (menu) */
+.header .navbar-collapse {
+  background: var(--color-background);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 10px 0;
+}
+
+/* lista de links */
+.header .navbar-nav {
+  width: 100%;
+  padding: 4px 0;
+  gap: 4px;
+}
+.header .nav-item {
+  text-align: center;
+}
+.header .nav-link {
+  color: var(--color-black) !important;
+  display: block;
+  padding: 10px 14px !important; /* reduzido no mobile */
+  border-radius: 10px;
+}
+.header .nav-link:hover {
+  background: rgba(0, 0, 0, 0.035);
+}
+
+/* botão "Meu carrinho" dentro do header */
+.header .btn.btn-white.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px auto 0;
+  padding-right: 56px; /* mantém espaço para o ícone à direita */
+  position: relative;
+}
+.header .btn.btn-white.btn-icon .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* centraliza verticalmente o ícone */
+}
+
+/* badge do carrinho melhor posicionado */
+.header .badge-total-carrinho {
+  right: -6px;
+  top: -6px;
+}
+
+/* ------------- breakpoints ------------- */
+
+/* >= 576px: leve respiro */
+@media (min-width: 576px) {
+  .header .navbar-brand .img-logo {
+    height: 44px;
+  }
+}
+
+/* >= 768px: menu um pouco mais espaçado */
+@media (min-width: 768px) {
+  .header .nav-link {
+    padding: 10px 18px !important;
+  }
+}
+
+/* >= 992px: layout desktop (restaura estética central com espaçamento maior) */
+@media (min-width: 992px) {
+  /* volta a margem da marca como no seu design */
+  .header a.navbar-brand {
+    margin-left: -30px;
+  }
+
+  .header .navbar {
+    min-height: 72px;
+  }
+  .header .navbar-collapse {
+    background: transparent;
+    border-top: 0;
+    padding: 0;
+  }
+  .header .navbar-nav {
+    width: auto;
+    gap: 0;
+    padding: 0;
+  }
+  .header .nav-link {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+    border-radius: 12px;
+  }
+  .header .btn.btn-white.btn-icon {
+    margin: 0 0 0 8px; /* fica ao lado do menu */
+  }
+}
+
+/* >= 1200px: espaçamento cheio como no original */
+@media (min-width: 1200px) {
+  .header .nav-link {
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+  }
 }
