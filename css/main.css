@@ -935,3 +935,178 @@ select.form-control {
     padding-right: 35px !important;
   }
 }
+/* =========================
+   BANNER EMPILHADO + ORDEM
+   ========================= */
+
+/* 1) Layout mobile-first: empilha as colunas e define ordem */
+@media (max-width: 767.98px) {
+  /* força as col-6 do banner a ocuparem 100% no mobile */
+  .banner .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* ORDEM PADRÃO: texto em cima, imagem embaixo */
+  .banner .row > [class*="col-"]:nth-child(1) {
+    order: 1;
+  } /* coluna do texto */
+  .banner .row > [class*="col-"]:nth-child(2) {
+    order: 2;
+  } /* coluna da imagem */
+
+  /* Se quiser a IMAGEM EM CIMA: adicione .image-top ao <section class="banner"> */
+  .banner.image-top .row > [class*="col-"]:nth-child(1) {
+    order: 2;
+  }
+  .banner.image-top .row > [class*="col-"]:nth-child(2) {
+    order: 1;
+  }
+
+  /* ajustes visuais quando empilhado */
+  .banner {
+    padding: 84px 0 40px;
+  }
+  .banner .text-banner h1 {
+    font-size: clamp(28px, 6vw, 60px);
+    margin: 0;
+  }
+  .banner .text-banner p {
+    font-size: clamp(14px, 3vw, 20px);
+    margin: 12px 0;
+  }
+
+  /* círculo amarelo e imagem centralizados */
+  .banner .card-banner {
+    width: min(80vw, 360px);
+    height: min(80vw, 360px);
+    border-radius: 50%;
+    background: #f4c949;
+    margin: 20px auto 0;
+    position: relative;
+  }
+  .banner .img-banner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .banner .img-banner img {
+    width: min(90vw, 440px);
+    position: relative;
+    top: -12px;
+  }
+
+  /* card de depoimento dentro do banner embaixo da imagem */
+  .banner .card-case {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 16px auto 0;
+    width: 90%;
+    max-width: 340px;
+  }
+}
+
+/* 2) Tablets: ainda empilhado, levemente maior */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .banner {
+    padding: 96px 0 64px;
+  }
+  .banner .card-banner {
+    width: 320px;
+    height: 320px;
+    margin-top: 24px;
+  }
+  .banner .img-banner img {
+    width: 360px;
+    top: -20px;
+  }
+  .banner .card-case {
+    margin-top: 20px;
+  }
+}
+
+/* 3) Desktop: volta pro layout lado a lado com posicionamentos originais */
+@media (min-width: 992px) {
+  .banner {
+    padding: 110px 0 120px;
+  }
+  .banner .card-banner {
+    width: 420px;
+    height: 420px;
+    border-radius: 170px;
+    background: #f4c949;
+    position: absolute;
+    right: 0;
+    top: -40px;
+    margin: 0;
+  }
+  .banner .img-banner img {
+    position: absolute;
+    width: 480px;
+    top: 80px;
+    right: 15px;
+    margin: 0;
+  }
+  .banner .card-case {
+    position: absolute;
+    right: 0;
+    bottom: -60px;
+    width: 340px;
+    margin: 0;
+  }
+}
+@media (min-width: 1200px) {
+  .banner .img-banner img {
+    width: 500px;
+    top: 100px;
+    right: 15px;
+  }
+  .banner .card-banner {
+    width: 450px;
+    height: 450px;
+  }
+  .banner .card-case {
+    bottom: -75px;
+  }
+}
+/* =========================
+   BANNER: Ícones sociais alinhados no mobile
+   ========================= */
+@media (max-width: 767.98px) {
+  /* força 100% de largura nas colunas */
+  .banner .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* ordem: imagem em cima, texto embaixo */
+  .banner .row > [class*="col-"]:nth-child(1) {
+    order: 2;
+  } /* texto */
+  .banner .row > [class*="col-"]:nth-child(2) {
+    order: 1;
+  } /* imagem */
+
+  /* container do texto vira flex colunar */
+  .banner .col-6:first-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* agrupa ícones em uma fileira */
+  .banner .col-6:first-child .social-icons {
+    display: flex;
+    justify-content: center; /* centraliza horizontal */
+    gap: 12px; /* espaço entre os ícones */
+    margin-top: 16px;
+  }
+
+  /* estilo de cada botão social */
+  .banner .col-6:first-child .social-icons .btn-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+}
