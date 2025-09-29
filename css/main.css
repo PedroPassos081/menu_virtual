@@ -1077,3 +1077,207 @@ select.form-control {
     min-height: 420px;
   }
 }
+
+/* =========================================
+   CARDÁPIO — CSS RESPONSIVO COMPLETO
+   ========================================= */
+
+/* base da seção */
+.cardapio {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 140px; /* elástico; ajustado por breakpoints */
+}
+
+/* fundo decorativo */
+.cardapio .background-cardapio {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 300px;
+  background-image: url(../img/bg-icons-1.png);
+  background-repeat: repeat;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ---------- CHIPS / CATEGORIAS ---------- */
+.cardapio .container-menu {
+  margin: 0 16px 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding-bottom: 6px;
+}
+.cardapio .container-menu::-webkit-scrollbar {
+  height: 6px;
+}
+.cardapio .container-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.cardapio .container-menu .btn-white {
+  white-space: nowrap;
+  scroll-snap-align: start;
+}
+.cardapio .container-menu .btn-white.active {
+  background: var(--color-primary);
+  color: var(--color-black-heavy) !important;
+}
+
+/* ---------- GRID DE PRODUTOS ---------- */
+
+/* Mobile: usa flex padrão do Bootstrap, mas força 100% pra qualquer col-* injetado */
+@media (max-width: 767.98px) {
+  #itensCardapio > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Tablet: vira grid 2 colunas */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #itensCardapio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    width: 100%;
+  }
+  #itensCardapio > [class*="col-"] {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  .cardapio {
+    padding-bottom: 200px;
+  }
+}
+
+/* Desktop: 3 colunas */
+@media (min-width: 992px) {
+  #itensCardapio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  #itensCardapio > [class*="col-"] {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  .cardapio {
+    padding-bottom: 260px;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1200px) {
+  #itensCardapio {
+    gap: 24px;
+  }
+  .cardapio {
+    padding-bottom: 300px;
+  }
+}
+
+/* ---------- CARD / ITEM ---------- */
+.cardapio .card-item {
+  height: auto; /* remove altura fixa */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--color-white);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* imagem com proporção consistente */
+.cardapio .card-item .img-produto {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* alinha a grade */
+  overflow: hidden;
+  border-radius: 11px;
+}
+.cardapio .card-item .img-produto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 11px;
+}
+
+/* textos */
+.cardapio .card-item .title-produto {
+  color: var(--color-black);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+.cardapio .price-produto {
+  color: var(--color-primary);
+  font-size: 20px;
+  margin: 0;
+}
+
+/* Telas muito estreitas: permite que o "Adicionar" quebre de linha */
+@media (max-width: 380px) {
+  .cardapio .card-item .add-carrinho {
+    flex-wrap: wrap;
+  }
+  .cardapio .btn-add {
+    flex: 1 1 100%;
+    margin-left: 0;
+    margin-top: 6px;
+  }
+}
+
+/* ---------- COMPORTAMENTO: DESKTOP x MOBILE ---------- */
+
+/* Desktop com mouse: hover amarelo + mostra controles */
+@media (hover: hover) and (min-width: 992px) {
+  .cardapio .card-item:hover {
+    background: var(--color-primary);
+  }
+  .cardapio .card-item:hover .title-produto {
+    display: none;
+  }
+  .cardapio .card-item:hover .add-carrinho {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .cardapio .card-item:hover .price-produto {
+    color: var(--color-black-heavy) !important;
+    margin-top: 12px;
+  }
+}
+
+/* Mobile/Tablet: controles sempre visíveis (sem hover) */
+@media (max-width: 991.98px) {
+  .cardapio .card-item .add-carrinho {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .cardapio .card-item .title-produto {
+    display: block;
+    white-space: normal;
+    overflow: visible;
+    height: auto;
+  }
+  .cardapio .price-produto {
+    margin-top: 2px;
+  }
+}
+
+/* ---------- BOTÃO "VER MAIS" ---------- */
+.cardapio #btnVermais,
+.cardapio #btnVermais:focus {
+  margin-top: 16px;
+  outline: none;
+}
