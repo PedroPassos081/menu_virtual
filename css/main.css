@@ -1615,3 +1615,120 @@ select.form-control {
     height: 340px;
   }
 }
+
+/* =========================
+   FOOTER RESPONSIVO
+   ========================= */
+
+footer {
+  background: var(--color-secondary);
+  padding: 20px 0;
+}
+
+/* base das 3 colunas */
+footer .container .row > [class*="col-"] {
+  display: flex;
+  align-items: center;
+}
+
+/* logo */
+.logo-footer {
+  width: 140px; /* desktop ajusta abaixo */
+  height: auto;
+  display: block;
+}
+
+/* texto central */
+footer .container-texto-footer p {
+  margin: 0;
+  text-align: center;
+  color: var(--color-black);
+}
+
+/* redes sociais */
+footer .container-redes-footer {
+  gap: 10px;
+}
+footer .btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px; /* clique confortável */
+  padding: 0; /* botão 1:1 */
+  border-radius: 12px; /* já vem do .btn-white, mas reforça formato */
+}
+
+/* ---------- Mobile (empilha e centraliza) ---------- */
+@media (max-width: 767.98px) {
+  footer {
+    padding: 22px 0;
+  }
+
+  /* cada coluna ocupa 100% e fica centralizada */
+  footer .container .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+    justify-content: center;
+    margin: 6px 0;
+  }
+
+  .logo-footer {
+    width: 120px;
+  }
+
+  /* aumenta o toque nas redes e centraliza em linha */
+  footer .container-redes-footer {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  footer {
+    padding: 24px 0;
+  }
+  .logo-footer {
+    width: 130px;
+  }
+  footer .container-texto-footer p {
+    text-align: center;
+  }
+  footer .container-redes-footer {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* ---------- Desktop (3 colunas alinhadas) ---------- */
+@media (min-width: 992px) {
+  footer {
+    padding: 26px 0;
+  }
+
+  .container-logo-footer {
+    justify-content: flex-start;
+  }
+  .container-texto-footer {
+    justify-content: center;
+  }
+  .container-redes-footer {
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .logo-footer {
+    width: 150px;
+  }
+}
+
+/* ---------- Desktop grande ---------- */
+@media (min-width: 1200px) {
+  footer {
+    padding: 28px 0;
+  }
+  .logo-footer {
+    width: 160px;
+  }
+}
