@@ -1110,3 +1110,121 @@ select.form-control {
     margin: 0;
   }
 }
+
+/* =========================
+   SERVIÇOS RESPONSIVO
+   ========================= */
+
+/* base */
+.servicos {
+  position: relative;
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
+
+.background-servicos {
+  position: absolute;
+  inset: auto 0 0 0; /* fixa no rodapé da seção */
+  min-height: 280px; /* altura mínima mais suave */
+  background-image: url(../img/bg-icons-2.png);
+  background-repeat: repeat;
+  opacity: 0.25; /* mais discreto para não brigar no mobile */
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* textos */
+.servicos .hint-title {
+  display: inline-block;
+  letter-spacing: 4px;
+  font-size: clamp(12px, 2.2vw, 16px);
+}
+.servicos .title {
+  font-size: clamp(22px, 4.2vw, 40px);
+  margin-bottom: 28px;
+}
+
+/* cards */
+.servicos .card-icon {
+  height: auto;
+  margin-bottom: 14px;
+}
+.servicos .card-icon img {
+  width: min(56vw, 160px); /* ícone escala bem no mobile */
+  height: auto;
+}
+.servicos .card-text {
+  padding: 0 10px;
+  font-size: 15px;
+  color: var(--color-text-out);
+}
+.servicos .card-text p {
+  font-size: clamp(16px, 3.6vw, 22px);
+  margin-bottom: 8px;
+}
+
+/* ---- GRID (mobile-first) ---- */
+
+/* Mobile: 1 coluna */
+@media (max-width: 767.98px) {
+  .servicos .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .servicos .mb-5 {
+    margin-bottom: 28px !important;
+  }
+
+  /* centraliza e dá respiro */
+  .servicos .card-icon,
+  .servicos .card-text {
+    text-align: center;
+  }
+  .servicos .card-text {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet: 2 colunas */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .servicos {
+    padding-top: 72px;
+    padding-bottom: 90px;
+  }
+  .servicos .row > [class*="col-4"] {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .servicos .card-icon img {
+    width: 180px;
+  }
+}
+
+/* Desktop: 3 colunas (como o seu layout original) */
+@media (min-width: 992px) {
+  .servicos {
+    padding-top: 90px;
+    padding-bottom: 120px;
+  }
+  .servicos .row > [class*="col-4"] {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  .servicos .card-icon img {
+    width: 200px;
+  }
+  .background-servicos {
+    min-height: 360px;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1200px) {
+  .servicos .card-icon img {
+    width: 220px;
+  }
+  .background-servicos {
+    min-height: 420px;
+  }
+}
